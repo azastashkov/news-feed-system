@@ -5,52 +5,52 @@
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="client" parent="1" style="shape=actor;whiteSpace=wrap;html=1;fontSize=14;" value="Client" vertex="1">
-          <mxGeometry height="80" width="80" x="60" y="350" as="geometry" />
+          <mxGeometry height="80" width="80" x="80" y="450" as="geometry" />
         </mxCell>
         <mxCell id="lb" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;" value="Load Balancer&#xa;(Nginx)" vertex="1">
-          <mxGeometry height="60" width="140" x="220" y="360" as="geometry" />
+          <mxGeometry height="60" width="140" x="240" y="460" as="geometry" />
         </mxCell>
         <mxCell id="ws1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" value="Web Server 1&#xa;(Spring Boot)" vertex="1">
-          <mxGeometry height="50" width="140" x="440" y="300" as="geometry" />
+          <mxGeometry height="50" width="140" x="460" y="400" as="geometry" />
         </mxCell>
         <mxCell id="ws2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" value="Web Server 2&#xa;(Spring Boot)" vertex="1">
-          <mxGeometry height="50" width="140" x="440" y="420" as="geometry" />
+          <mxGeometry height="50" width="140" x="460" y="520" as="geometry" />
         </mxCell>
         <mxCell id="postservice" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;fontStyle=1;" value="Post Service" vertex="1">
-          <mxGeometry height="50" width="140" x="680" y="200" as="geometry" />
+          <mxGeometry height="50" width="140" x="700" y="300" as="geometry" />
         </mxCell>
         <mxCell id="postcache" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;size=10;" value="Post Cache&#xa;(Redis)" vertex="1">
-          <mxGeometry height="60" width="120" x="890" y="120" as="geometry" />
+          <mxGeometry height="60" width="120" x="910" y="220" as="geometry" />
         </mxCell>
         <mxCell id="postdb" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;size=10;" value="Post DB&#xa;(PostgreSQL)" vertex="1">
-          <mxGeometry height="60" width="120" x="890" y="210" as="geometry" />
+          <mxGeometry height="60" width="120" x="910" y="310" as="geometry" />
         </mxCell>
         <mxCell id="fanoutservice" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;fontStyle=1;" value="Fanout Service" vertex="1">
-          <mxGeometry height="50" width="140" x="680" y="360" as="geometry" />
+          <mxGeometry height="50" width="140" x="700" y="460" as="geometry" />
         </mxCell>
         <mxCell id="mq" parent="1" style="shape=process;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=12;size=0.05;" value="Message Queue&#xa;(RabbitMQ)" vertex="1">
-          <mxGeometry height="50" width="140" x="880" y="360" as="geometry" />
+          <mxGeometry height="50" width="140" x="900" y="460" as="geometry" />
         </mxCell>
         <mxCell id="workers" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;fontStyle=1;" value="Fanout Workers" vertex="1">
-          <mxGeometry height="50" width="140" x="1080" y="360" as="geometry" />
+          <mxGeometry height="50" width="140" x="1100" y="460" as="geometry" />
         </mxCell>
         <mxCell id="feedcache" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;size=10;" value="News Feed Cache&#xa;(Redis)" vertex="1">
-          <mxGeometry height="60" width="130" x="1280" y="360" as="geometry" />
+          <mxGeometry height="60" width="130" x="1300" y="460" as="geometry" />
         </mxCell>
         <mxCell id="graphdb" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;size=10;" value="Graph DB&#xa;(Neo4j)" vertex="1">
-          <mxGeometry height="60" width="120" x="950" y="500" as="geometry" />
+          <mxGeometry height="60" width="120" x="1110" y="310" as="geometry" />
         </mxCell>
         <mxCell id="usercache" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;size=10;" value="User Cache&#xa;(Redis)" vertex="1">
-          <mxGeometry height="60" width="120" x="1090" y="580" as="geometry" />
+          <mxGeometry height="60" width="120" x="970" y="700" as="geometry" />
         </mxCell>
         <mxCell id="userdb" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;size=10;" value="User DB&#xa;(PostgreSQL)" vertex="1">
-          <mxGeometry height="60" width="120" x="1290" y="580" as="geometry" />
+          <mxGeometry height="60" width="120" x="970" y="790" as="geometry" />
         </mxCell>
         <mxCell id="prometheus" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" value="Prometheus" vertex="1">
-          <mxGeometry height="40" width="120" x="190" y="590" as="geometry" />
+          <mxGeometry height="40" width="120" x="1230" y="700" as="geometry" />
         </mxCell>
         <mxCell id="grafana" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" value="Grafana" vertex="1">
-          <mxGeometry height="40" width="120" x="440" y="640" as="geometry" />
+          <mxGeometry height="40" width="120" x="1230" y="790" as="geometry" />
         </mxCell>
         <mxCell id="e1" edge="1" parent="1" source="client" target="lb">
           <mxGeometry relative="1" as="geometry" />
@@ -88,11 +88,11 @@
         <mxCell id="e11" edge="1" parent="1" source="workers" target="graphdb">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e12" edge="1" parent="1" source="workers" target="usercache">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="e13" edge="1" parent="1" source="usercache" target="userdb">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="e13" edge="1" parent="1" source="9BrtpxVQ17bSwBtXJA7A-3" style="exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" target="userdb">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1110" y="890" as="sourcePoint" />
+            <mxPoint x="1190" y="890" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
         <mxCell id="e14" edge="1" parent="1" source="ws1" target="fanoutservice">
           <mxGeometry relative="1" as="geometry" />
@@ -100,22 +100,44 @@
         <mxCell id="e15" edge="1" parent="1" source="ws2" target="fanoutservice">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e16" edge="1" parent="1" source="prometheus" style="dashed=1;" target="ws1">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="e17" edge="1" parent="1" source="prometheus" style="dashed=1;" target="ws2">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
         <mxCell id="e18" edge="1" parent="1" source="grafana" style="dashed=1;" target="prometheus">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e19" edge="1" parent="1" source="ws1" style="dashed=1;strokeColor=#0000FF;" target="feedcache" value="read feed">
+        <mxCell id="9BrtpxVQ17bSwBtXJA7A-6" edge="1" parent="1" source="9BrtpxVQ17bSwBtXJA7A-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="postservice">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="700" y="100" />
-              <mxPoint x="1340" y="100" />
+              <mxPoint x="1470" y="655" />
+              <mxPoint x="1470" y="200" />
+              <mxPoint x="770" y="200" />
             </Array>
           </mxGeometry>
+        </mxCell>
+        <mxCell id="9BrtpxVQ17bSwBtXJA7A-2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;fontStyle=1;" value="NewsFeedService" vertex="1">
+          <mxGeometry height="50" width="140" x="700" y="630" as="geometry" />
+        </mxCell>
+        <mxCell id="9BrtpxVQ17bSwBtXJA7A-3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;fontStyle=1;" value="UserService" vertex="1">
+          <mxGeometry height="50" width="140" x="700" y="750" as="geometry" />
+        </mxCell>
+        <mxCell id="9BrtpxVQ17bSwBtXJA7A-4" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="769.5" y="680" as="sourcePoint" />
+            <mxPoint x="770" y="750" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9BrtpxVQ17bSwBtXJA7A-5" edge="1" parent="1" source="ws2" style="entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=0.75;exitY=1;exitDx=0;exitDy=0;" target="9BrtpxVQ17bSwBtXJA7A-2">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="540" y="700" as="sourcePoint" />
+            <mxPoint x="726" y="530" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9BrtpxVQ17bSwBtXJA7A-8" edge="1" parent="1" source="9BrtpxVQ17bSwBtXJA7A-3" style="entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;exitX=1;exitY=0.25;exitDx=0;exitDy=0;" target="usercache">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="840" y="770" as="sourcePoint" />
+            <mxPoint x="920" y="770" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9BrtpxVQ17bSwBtXJA7A-9" edge="1" parent="1" source="9BrtpxVQ17bSwBtXJA7A-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;" target="feedcache">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
