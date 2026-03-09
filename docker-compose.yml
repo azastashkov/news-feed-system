@@ -100,7 +100,6 @@ services:
       - "7687:7687"
     volumes:
       - neo4j-data:/data
-      - ./infra/neo4j/init-graph.cypher:/var/lib/neo4j/import/init-graph.cypher:ro
     healthcheck:
       test: ["CMD-SHELL", "wget -q --spider http://localhost:7474 || exit 1"]
       interval: 10s
