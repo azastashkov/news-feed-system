@@ -1,0 +1,20 @@
+// Create user nodes
+CREATE (alice:User {userId: 'a0000000-0000-0000-0000-000000000001'})
+CREATE (bob:User {userId: 'a0000000-0000-0000-0000-000000000002'})
+CREATE (charlie:User {userId: 'a0000000-0000-0000-0000-000000000003'})
+CREATE (diana:User {userId: 'a0000000-0000-0000-0000-000000000004'})
+CREATE (eve:User {userId: 'a0000000-0000-0000-0000-000000000005'})
+
+// Create friendship relationships (bidirectional)
+CREATE (alice)-[:FRIENDS_WITH]->(bob)
+CREATE (bob)-[:FRIENDS_WITH]->(alice)
+CREATE (alice)-[:FRIENDS_WITH]->(charlie)
+CREATE (charlie)-[:FRIENDS_WITH]->(alice)
+CREATE (bob)-[:FRIENDS_WITH]->(diana)
+CREATE (diana)-[:FRIENDS_WITH]->(bob)
+CREATE (charlie)-[:FRIENDS_WITH]->(diana)
+CREATE (diana)-[:FRIENDS_WITH]->(charlie)
+CREATE (diana)-[:FRIENDS_WITH]->(eve)
+CREATE (eve)-[:FRIENDS_WITH]->(diana)
+CREATE (alice)-[:FRIENDS_WITH]->(eve)
+CREATE (eve)-[:FRIENDS_WITH]->(alice);

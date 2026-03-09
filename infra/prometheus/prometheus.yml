@@ -1,0 +1,18 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  - job_name: 'news-feed-app-1'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['news-feed-app-1:8080']
+        labels:
+          instance: 'app-1'
+
+  - job_name: 'news-feed-app-2'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['news-feed-app-2:8080']
+        labels:
+          instance: 'app-2'

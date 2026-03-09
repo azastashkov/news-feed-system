@@ -1,0 +1,4 @@
+rootProject.name = 'news-feed-system'
+
+include 'news-feed-app'
+include 'load-test-client'

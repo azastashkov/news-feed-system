@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: load-test-client
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/newsfeed
+    username: newsfeed
+    password: newsfeed
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    open-in-view: false
+
+  neo4j:
+    uri: bolt://localhost:7687
+    authentication:
+      username: neo4j
+      password: neo4jpassword
+
+  data:
+    neo4j:
+      database: neo4j
+
+load-test:
+  target-url: ${LOAD_TEST_TARGET_URL:http://localhost}
+  user-count: 20
+  friends-per-user: 5
+  duration-seconds: 60
+  publish-rps: 10
+  read-rps: 50
+
+logging:
+  level:
+    com.newsfeed.loadtest: INFO

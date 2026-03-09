@@ -1,0 +1,158 @@
+<mxfile host="app.diagrams.net" modified="2026-03-09T00:00:00.000Z" agent="Claude" version="21.0.0">
+  <diagram id="news-feed-system" name="Components Diagram">
+    <mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Client -->
+        <mxCell id="client" value="Client" style="shape=actor;whiteSpace=wrap;html=1;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="60" y="350" width="80" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Load Balancer -->
+        <mxCell id="lb" value="Load Balancer&#xa;(Nginx)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="220" y="360" width="140" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Web Server 1 -->
+        <mxCell id="ws1" value="Web Server 1&#xa;(Spring Boot)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="440" y="300" width="140" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Web Server 2 -->
+        <mxCell id="ws2" value="Web Server 2&#xa;(Spring Boot)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="440" y="420" width="140" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Post Service -->
+        <mxCell id="postservice" value="Post Service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="680" y="200" width="140" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Post Cache -->
+        <mxCell id="postcache" value="Post Cache&#xa;(Redis)" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;size=10;" vertex="1" parent="1">
+          <mxGeometry x="890" y="120" width="120" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Post DB -->
+        <mxCell id="postdb" value="Post DB&#xa;(PostgreSQL)" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;size=10;" vertex="1" parent="1">
+          <mxGeometry x="890" y="210" width="120" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Fanout Service -->
+        <mxCell id="fanoutservice" value="Fanout Service" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="680" y="360" width="140" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Message Queue -->
+        <mxCell id="mq" value="Message Queue&#xa;(RabbitMQ)" style="shape=process;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=12;size=0.05;" vertex="1" parent="1">
+          <mxGeometry x="880" y="360" width="140" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Fanout Workers -->
+        <mxCell id="workers" value="Fanout Workers" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="360" width="140" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- News Feed Cache -->
+        <mxCell id="feedcache" value="News Feed Cache&#xa;(Redis)" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;size=10;" vertex="1" parent="1">
+          <mxGeometry x="1280" y="360" width="130" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Graph DB -->
+        <mxCell id="graphdb" value="Graph DB&#xa;(Neo4j)" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;size=10;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="480" width="120" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- User Cache -->
+        <mxCell id="usercache" value="User Cache&#xa;(Redis)" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;size=10;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="580" width="120" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- User DB -->
+        <mxCell id="userdb" value="User DB&#xa;(PostgreSQL)" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;size=10;" vertex="1" parent="1">
+          <mxGeometry x="1280" y="580" width="120" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Monitoring -->
+        <mxCell id="prometheus" value="Prometheus" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="440" y="580" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="grafana" value="Grafana" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="440" y="640" width="120" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Edges -->
+        <mxCell id="e1" edge="1" source="client" target="lb" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" source="lb" target="ws1" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" source="lb" target="ws2" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" edge="1" source="ws1" target="postservice" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4b" edge="1" source="ws2" target="postservice" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" edge="1" source="postservice" target="postcache" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" edge="1" source="postservice" target="postdb" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" edge="1" source="postservice" target="fanoutservice" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" edge="1" source="fanoutservice" target="mq" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e9" edge="1" source="mq" target="workers" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e10" edge="1" source="workers" target="feedcache" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e11" edge="1" source="workers" target="graphdb" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e12" edge="1" source="workers" target="usercache" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e13" edge="1" source="usercache" target="userdb" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e14" edge="1" source="ws1" target="fanoutservice" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e15" edge="1" source="ws2" target="fanoutservice" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e16" style="dashed=1;" edge="1" source="prometheus" target="ws1" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e17" style="dashed=1;" edge="1" source="prometheus" target="ws2" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e18" style="dashed=1;" edge="1" source="grafana" target="prometheus" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- News Feed read path -->
+        <mxCell id="e19" value="read feed" style="dashed=1;strokeColor=#0000FF;" edge="1" source="ws1" target="feedcache" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="700" y="100" />
+              <mxPoint x="1340" y="100" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

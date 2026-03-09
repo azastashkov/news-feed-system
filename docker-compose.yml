@@ -1,0 +1,191 @@
+services:
+  # Load Balancer
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./infra/nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      news-feed-app-1:
+        condition: service_healthy
+      news-feed-app-2:
+        condition: service_healthy
+
+  # Web Server 1
+  news-feed-app-1:
+    build:
+      context: .
+      dockerfile: news-feed-app/Dockerfile
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      neo4j:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost:8080/actuator/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+
+  # Web Server 2
+  news-feed-app-2:
+    build:
+      context: .
+      dockerfile: news-feed-app/Dockerfile
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      neo4j:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost:8080/actuator/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+
+  # PostgreSQL - Post DB & User DB
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: newsfeed
+      POSTGRES_USER: newsfeed
+      POSTGRES_PASSWORD: newsfeed
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./infra/postgres/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U newsfeed"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # Redis - Post Cache, User Cache, News Feed Cache
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # Neo4j - Graph DB for friend relationships
+  neo4j:
+    image: neo4j:5
+    environment:
+      NEO4J_AUTH: neo4j/neo4jpassword
+      NEO4J_PLUGINS: '[]'
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    volumes:
+      - neo4j-data:/data
+      - ./infra/neo4j/init-graph.cypher:/var/lib/neo4j/import/init-graph.cypher:ro
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q --spider http://localhost:7474 || exit 1"]
+      interval: 10s
+      timeout: 10s
+      retries: 10
+      start_period: 30s
+
+  # Neo4j Graph Data Init
+  neo4j-init:
+    image: neo4j:5
+    depends_on:
+      neo4j:
+        condition: service_healthy
+    volumes:
+      - ./infra/neo4j/init-graph.cypher:/init-graph.cypher:ro
+    entrypoint: >
+      bash -c "cypher-shell -a bolt://neo4j:7687 -u neo4j -p neo4jpassword < /init-graph.cypher && echo 'Neo4j graph initialized'"
+    restart: "no"
+
+  # RabbitMQ - Message Queue
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "check_running"]
+      interval: 10s
+      timeout: 10s
+      retries: 5
+
+  # Prometheus - Metrics
+  prometheus:
+    image: prom/prometheus:latest
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./infra/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus-data:/prometheus
+
+  # Grafana - Dashboards
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3000:3000"
+    environment:
+      GF_SECURITY_ADMIN_USER: admin
+      GF_SECURITY_ADMIN_PASSWORD: admin
+    volumes:
+      - ./infra/grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./infra/grafana/provisioning/dashboards/news-feed-dashboard.json:/var/lib/grafana/dashboards/news-feed-dashboard.json:ro
+      - grafana-data:/var/lib/grafana
+    depends_on:
+      - prometheus
+
+  # Load Test Client (started with: docker compose --profile test up load-client)
+  load-client:
+    build:
+      context: .
+      dockerfile: load-test-client/Dockerfile
+    profiles:
+      - test
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - LOAD_TEST_TARGET_URL=http://nginx
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/newsfeed
+      - SPRING_DATASOURCE_USERNAME=newsfeed
+      - SPRING_DATASOURCE_PASSWORD=newsfeed
+      - SPRING_NEO4J_URI=bolt://neo4j:7687
+      - SPRING_NEO4J_AUTHENTICATION_USERNAME=neo4j
+      - SPRING_NEO4J_AUTHENTICATION_PASSWORD=neo4jpassword
+    depends_on:
+      nginx:
+        condition: service_started
+      postgres:
+        condition: service_healthy
+      neo4j:
+        condition: service_healthy
+
+volumes:
+  postgres-data:
+  redis-data:
+  neo4j-data:
+  rabbitmq-data:
+  prometheus-data:
+  grafana-data:
