@@ -21,8 +21,9 @@ public class NewsFeedApiClient {
                     .uri(uriBuilder -> uriBuilder
                             .path("/v1/me/feed")
                             .queryParam("auth_token", authToken)
-                            .queryParam("content", content)
                             .build())
+                    .contentType(org.springframework.http.MediaType.APPLICATION_JSON)
+                    .bodyValue(java.util.Map.of("content", content))
                     .retrieve()
                     .toBodilessEntity()
                     .block();
