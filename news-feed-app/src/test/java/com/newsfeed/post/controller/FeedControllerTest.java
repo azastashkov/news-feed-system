@@ -23,6 +23,7 @@ import java.util.UUID;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
+import static org.springframework.http.MediaType.APPLICATION_JSON;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -70,7 +71,8 @@ class FeedControllerTest {
         when(postService.createPost(eq(USER_ID), eq("Hello World"))).thenReturn(post);
 
         mockMvc.perform(post("/v1/me/feed")
-                        .param("content", "Hello World"))
+                        .contentType(APPLICATION_JSON)
+                        .content("{\"content\": \"Hello World\"}"))
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.content").value("Hello World"))
                 .andExpect(jsonPath("$.userId").value(USER_ID.toString()));
